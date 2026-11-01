@@ -1,7 +1,94 @@
-<form action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="cf118704-cd6c-4d37-be0b-0ed236727df4">
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
-  <textarea name="message" required></textarea>
-  <button type="submit">Submit</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Customer Feedback</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        h2 { margin-top: 0; color: #111; }
+        p { color: #666; margin-bottom: 24px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 12px;
+            box-sizing: border-box;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #0078d4;
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+        button {
+            background: #0078d4;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        button:hover { background: #005a9e; }
+        .bot-detector { display: none; }
+    </style>
+</head>
+<body>
+
+    <h2>Customer Feedback</h2>
+    <p>We value your feedback! Please let us know if you encounter any bugs or have feature suggestions for our App.</p>
+    
+    <form action="https://api.web3forms.com/submit" method="POST">
+        
+        <!-- 1. Replace with your Web3Forms Access Key -->
+        <input type="hidden" name="apikey" value="cf118704-cd6c-4d37-be0b-0ed236727df4">
+
+        <!-- 2. Set the email subject line -->
+        <input type="hidden" name="subject" value="New App Feedback Received">
+
+        <!-- 3. Honeypot Spam Protection -->
+        <input type="checkbox" name="botcheck" class="bot-detector" style="display: none;">
+
+        <div class="form-group">
+            <label for="type">Feedback Type:</label>
+            <select id="type" name="Feedback Type" required>
+                <option value="Bug Report">🐛 Bug Report</option>
+                <option value="Feature Request">💡 Feature Request</option>
+                <option value="General Feedback">⭐ General Feedback</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Description:</label>
+            <textarea id="message" name="Description" rows="5" placeholder="Please describe the issue or your suggestion in detail..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address (Optional):</label>
+            <input type="email" id="email" name="Contact Email" placeholder="name@example.com">
+        </div>
+
+        <!-- 4. Optional: Redirect URL after successful submission -->
+        <!-- <input type="hidden" name="redirect" value="https://yourname.github.io/your-repo/feedback/success.html"> -->
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+</body>
+</html>
